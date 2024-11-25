@@ -26,8 +26,16 @@ const deposit = () => {
     } else {
         balance = numberDepositAmount;
         document.getElementById("balance").innerText = "Balance: $" + balance;
+
+        // Show balance and bet sections
         document.getElementById("balanceDisplay").classList.replace("hidden", "visible");
         document.getElementById("betSection").classList.replace("hidden", "visible");
+
+        // Hide deposit section
+        document.getElementById("depositSection").classList.add("hidden");
+
+        // Show the "Show Deposit Section" button
+        document.getElementById("showDepositButton").classList.remove("hidden");
     }
 };
 
@@ -108,19 +116,30 @@ const transpose = (reels) => {
 
 const printRows = (rows) => {
     const rowsDiv = document.getElementById("rows");
-    for (const row of rows) {
-        let rowString = "";
-        for (const [i, symbol] of row.entries()) {
-            rowString += symbol;
-            if (i != row.length - 1) {
-                rowString += " | ";
-            }
-        }
-        const p = document.createElement("p");
-        p.innerText = rowString;
-        rowsDiv.appendChild(p);
-    }
+    rowsDiv.innerHTML = ""; // Clear previous rows
+
+    rows.forEach((row, rowIndex) => {
+        const rowDiv = document.createElement("div");
+        rowDiv.classList.add("slot-machine-row");
+
+        row.forEach((symbol, colIndex) => {
+            const symbolDiv = document.createElement("div");
+            symbolDiv.innerText = symbol;
+            symbolDiv.classList.add("slot-symbol");
+
+            // Delay to simulate staggered animation
+            setTimeout(() => {
+                symbolDiv.classList.add("animate"); // Trigger animation
+            }, (rowIndex + colIndex) * 300); // Stagger by row and column
+
+            rowDiv.appendChild(symbolDiv);
+        });
+
+        rowsDiv.appendChild(rowDiv);
+    });
 };
+
+
 
 const getWinnings = (rows, bet, lines) => {
     let winnings = 0;
@@ -149,11 +168,31 @@ const playAgain = () => {
     document.getElementById("betSection").classList.replace("hidden", "visible");
 };
 
-const playMusic = () => {
-    document.getElementById("background-music").play();
+const toggleMusic = () => {
+    const music = document.getElementById("background-music");
+    const musicButton = document.getElementById("music-button");
+
+    if (music.paused) {
+        music.play();
+        musicButton.innerText = "Stop Music";
+    } else {
+        music.pause();
+        music.currentTime = 0; // Reset to start
+        musicButton.innerText = "Play Music";
+    }
 };
 
-const stopMusic = () => {
-    document.getElementById("background-music").pause();
-    document.getElementById("background-music").currentTime = 0; // Reset to start
+const toggleDepositSection = () => {
+    const depositSection = document.getElementById("depositSection");
+    const showDepositButton = document.getElementById("showDepositButton");
+
+    if (depositSection.classList.contains("hidden")) {
+        depositSection.classList.remove("hidden");
+        showDepositButton.classList.add("hidden");
+    }
+    else {
+        depositSection.classList.add("hidden");
+        showDepositButton.classList.remove("hidden");
+    }
 };
+

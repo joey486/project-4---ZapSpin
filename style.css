@@ -27,3 +27,146 @@ div {
     text-align: center;
     margin: 20px;
 }
+
+/* General text styling */
+label, p {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #FFD700; /* Gold color for a luxurious look */
+    text-shadow: 2px 2px 4px #000; /* Subtle shadow for depth */
+}
+
+/* Input box styling */
+input[type="number"], input[type="text"] {
+    width: 200px;
+    padding: 10px;
+    border: 2px solid #FFD700; /* Match text color */
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #333; /* Dark background for contrast */
+    color: white;
+    outline: none;
+    text-align: center;
+}
+
+/* Focused input box styling */
+input[type="number"]:focus, input[type="text"]:focus {
+    border-color: #FF4500; /* Bright orange for focus state */
+    box-shadow: 0 0 10px #FF4500; /* Glow effect */
+}
+
+/* Button styling (inherits from earlier styles) */
+button {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #FF4500, #FFD700);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #FFD700;
+}
+
+button:active {
+    transform: scale(0.95);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, #FF6347, #FF4500);
+}
+
+#showDepositButton {
+    margin: 10px auto;
+    display: block;
+    padding: 10px 20px;
+    background-color: #ffa500;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#showDepositButton:hover {
+    background-color: #ff8c00;
+}
+
+#otherControls {
+    position: fixed;          /* Keep the buttons fixed on the screen */
+    top: 20%;                 /* Position the buttons vertically */
+    right: 20px;              /* Align them to the right side */
+    display: flex;
+    flex-direction: column;   /* Stack buttons vertically */
+    gap: 10px;                /* Add spacing between the buttons */
+}
+
+
+
+
+/* Music buttons container */
+#music-buttons {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Individual button styling (inherits from previous button styles) */
+#music-buttons button {
+    width: 150px;
+}
+
+/* Slot machine rows container */
+#rows {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 400px;
+    border: 3px solid #FFD700;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #222, #444);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Individual slot machine rows */
+.slot-machine-row {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+/* Individual slot symbols */
+.slot-symbol {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    font-weight: bold;
+    color: #FFD700;
+    background: #333;
+    border: 2px solid #FF4500;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, background 0.2s;
+}
+
+.slot-symbol.animate {
+    transform: scale(1.2);
+    background: #FF4500;
+    color: #FFF;
+    transition: transform 0.5s, background 0.5s, color 0.5s;
+}

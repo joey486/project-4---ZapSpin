@@ -9,14 +9,19 @@
 </head>
 <body>
     <h1>Gambling Machine</h1>
-    <div>
+
+
+    <!-- Deposit Section -->
+    <div id="depositSection">
         <label for="depositAmount">Enter a deposit amount: </label>
         <input type="number" id="depositAmount">
         <button onclick="deposit()">Deposit</button>
     </div>
+
     <div id="balanceDisplay" class="hidden">
         <p id="balance">Balance: $0</p>
     </div>
+    
     <div id="betSection" class="hidden">
         <label for="numberOfLines">Enter the number of lines to bet on (1-3): </label>
         <input type="number" id="numberOfLines">
@@ -41,10 +46,11 @@
         <source src="music/x2mate.com - Las Vegas Casino Music Video_ For Night Game of Poker, Blackjack, Roulette Wheel & Slots (128 kbps).mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <div>
-        <button onclick="playMusic()">Play Music</button>
-        <button onclick="stopMusic()">Stop Music</button>
-    </div>
+    <div id="otherControls">
+        <!-- Show Deposit Section Button -->
+        <button id="showDepositButton" class="hidden" onclick="toggleDepositSection()">Show/Hide Deposit Section</button>
+        <button id="toggleMusicButton" onclick="toggleMusic()">Play/Stop Music</button>
+    </div>    
 
     <script src="index.js"></script>
 </body>
