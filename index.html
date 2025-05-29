@@ -6,6 +6,10 @@
     <title>Gambling Machine</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="/images/images.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lilita+One&display=swap" rel="stylesheet">
+
   </head>
   <body>
     <h1>Slot Machine</h1>
@@ -34,8 +38,8 @@
     <div id="spinSection" class="hidden">
       <button onclick="spin()">Spin!</button>
     </div>
-    <div id="results" class="hidden">
-      <h2>Results</h2>
+    <div id="results" class="hidden" >
+      <h2 id="result">Results</h2>
       <div id="rows"></div>
       <p id="winnings"></p>
     </div>

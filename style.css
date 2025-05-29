@@ -11,8 +11,16 @@ body{
     background-position: top;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
     color: white;
+    user-select: none;
+    font-family: "Lilita One", sans-serif;
+    letter-spacing: 2px;
+    font-size: larger;
+}
+
+html{
+    
+    font-family: "Lilita One", sans-serif;
 }
 .hidden {
     display: none;
@@ -66,6 +74,9 @@ button {
     color: white;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
+    
+    letter-spacing: 2px;
+    font-family: "Lilita One", sans-serif;
 }
 
 button:hover {
@@ -169,4 +180,35 @@ button:active {
     background: #FF4500;
     color: #FFF;
     transition: transform 0.5s, background 0.5s, color 0.5s;
+}
+
+/*Fonts*/
+.lilita-one-regular {
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* .libre-baskerville-regular {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.libre-baskerville-bold {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.libre-baskerville-regular-italic {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: italic;
+} */
+
+
+#result{
+    font-size: xx-large;
+  -webkit-text-stroke: 0.5px black;
 }
