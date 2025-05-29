@@ -17,6 +17,59 @@ const SYMBOL_VALUE = {
 
 let balance = 0;
 
+
+document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    alert('Right-click is disabled on this site.');
+});
+
+document.addEventListener('keydown', function (e) {
+    // F12
+    if (e.key === 'F12') {
+        e.preventDefault();
+    }
+
+    // Ctrl+Shift+I
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') {
+        e.preventDefault();
+    }
+
+    // Ctrl+Shift+C
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'c') {
+        e.preventDefault();
+    }
+
+    // Ctrl+Shift+J
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'j') {
+        e.preventDefault();
+    }
+
+    // Ctrl+U (view source)
+    if (e.ctrlKey && e.key.toLowerCase() === 'u') {
+        e.preventDefault();
+    }
+});
+
+(function () {
+    const threshold = 160;
+    let devtools = false;
+
+    setInterval(() => {
+        const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+        const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+        if (widthThreshold || heightThreshold) {
+            if (!devtools) {
+                devtools = true;
+                alert('DevTools are open. Please close them to continue.');
+                // Optionally redirect or close tab
+                // window.location.href = 'about:blank';
+            }
+        } else {
+            devtools = false;
+        }
+    }, 1000);
+})();
+
 const deposit = () => {
     const depositAmount = document.getElementById("depositAmount").value;
     const numberDepositAmount = parseFloat(depositAmount);
