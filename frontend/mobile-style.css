@@ -1,0 +1,60 @@
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .main-container {
+    padding: 10px;
+  }
+  
+  .slot-machine {
+    width: 95%;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 2em;
+  }
+  
+  button, input {
+    width: 100%;
+    max-width: 300px;
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+
+  .slot-symbol {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5em;
+  }
+
+  #rows {
+    width: 100%;
+    max-width: 95%;
+    padding: 10px;
+    margin: 10px auto;
+  }
+
+  #otherControls,
+  #music-buttons {
+    position: static;
+    margin: 10px auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #music-buttons button {
+    width: auto;
+    padding: 10px;
+    font-size: 1em;
+  }
+
+  h2, p, label {
+    font-size: 1em;
+    text-align: center;
+    padding: 0 5px;
+  }
+
+  div {
+    margin: 10px;
+  }}
