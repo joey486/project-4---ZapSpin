@@ -6,7 +6,6 @@ let balance = 0;
 
 document.addEventListener('contextmenu', function (e) {
   e.preventDefault();
-  alert('Right-click is disabled on this site.');
 });
 
 document.addEventListener('keydown', function (e) {
