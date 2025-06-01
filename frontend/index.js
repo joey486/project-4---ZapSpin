@@ -10,9 +10,9 @@ document.addEventListener('contextmenu', function (e) {
 });
 
 document.addEventListener('keydown', function (e) {
-  if (e.key === 'F12' || 
-      (e.ctrlKey && e.shiftKey && ['i', 'j', 'c'].includes(e.key.toLowerCase())) || 
-      (e.ctrlKey && e.key.toLowerCase() === 'u')) {
+  if (e.key === 'F12' ||
+    (e.ctrlKey && e.shiftKey && ['i', 'j', 'c'].includes(e.key.toLowerCase())) ||
+    (e.ctrlKey && e.key.toLowerCase() === 'u')) {
     e.preventDefault();
   }
 });
@@ -35,6 +35,27 @@ document.addEventListener('keydown', function (e) {
   }, 1000);
 })();
 
+// ⬇️ Sync balance on load
+window.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const res = await fetch(`${BASE_URL}/balance`, {
+      credentials: "include"
+    });
+    const data = await res.json();
+    balance = data.balance ?? 0;
+
+    document.getElementById("balance").innerText = "Balance: $" + balance;
+    if (balance > 0) {
+      document.getElementById("balanceDisplay").classList.replace("hidden", "visible");
+      document.getElementById("betSection").classList.replace("hidden", "visible");
+      document.getElementById("depositSection").classList.add("hidden");
+      document.getElementById("showDepositButton").classList.remove("hidden");
+    }
+  } catch (err) {
+    console.error("Error fetching balance on load:", err);
+  }
+});
+
 const deposit = async () => {
   const depositAmount = document.getElementById("depositAmount").value;
   const numberDepositAmount = parseFloat(depositAmount);
@@ -48,6 +69,7 @@ const deposit = async () => {
     const response = await fetch(`${BASE_URL}/deposit`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
       body: JSON.stringify({ amount: numberDepositAmount })
     });
 
@@ -84,8 +106,6 @@ const placeBet = () => {
     return;
   }
 
-  balance -= bet * lines;
-  document.getElementById("balance").innerText = "Balance: $" + balance;
   document.getElementById("spinSection").classList.replace("hidden", "visible");
 };
 
@@ -97,8 +117,8 @@ const spin = async () => {
     const response = await fetch(`${BASE_URL}/spin`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      credentials: "include", 
-      body: JSON.stringify({ lines, bet }) 
+      credentials: "include",
+      body: JSON.stringify({ lines, bet })
     });
 
     const data = await response.json();
