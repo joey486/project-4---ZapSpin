@@ -33,12 +33,14 @@ document.addEventListener('keydown', function (e) {
     }
   }, 1000);
 })();
-
 window.addEventListener("DOMContentLoaded", async () => {
   try {
+    await fetch(`${BASE_URL}/init-session`, { credentials: "include" });
+
     const res = await fetch(`${BASE_URL}/balance`, {
       credentials: "include"
     });
+
     const data = await res.json();
     balance = data.balance ?? 0;
 
@@ -53,6 +55,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     console.error("Error fetching balance on load:", err);
   }
 });
+
 
 const deposit = async () => {
   const depositAmount = document.getElementById("depositAmount").value;
