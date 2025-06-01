@@ -35,7 +35,6 @@ document.addEventListener('keydown', function (e) {
   }, 1000);
 })();
 
-// ⬇️ Sync balance on load
 window.addEventListener("DOMContentLoaded", async () => {
   try {
     const res = await fetch(`${BASE_URL}/balance`, {
@@ -199,7 +198,6 @@ const toggleMusic = () => {
     musicButton.innerText = "Stop Music";
   } else {
     music.pause();
-    music.currentTime = 0;
     musicButton.innerText = "Play Music";
   }
 };
